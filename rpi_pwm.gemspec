@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'rpi_pwm'
-  s.version = '0.1.1'
+  s.version = '0.2.0'
   s.summary = 'A wrapper of the rpi_gpio gem with similar function to the rpi gem, but features PWM.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/rpi_pwm.rb']
