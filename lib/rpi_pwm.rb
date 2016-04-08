@@ -27,11 +27,20 @@ class RPiPwm
     at_exit { RPi::GPIO.clean_up pin_num}
 
   end
+  
+  def blinking?()
+    @blinking
+  end
 
   def duty_cycle=(val)
     @duty_cycle = val
     @pwm.duty_cycle = val
   end
+  
+  def freq=(val)
+    @freq = val
+    @pwm.frequency = val
+  end  
 
   def on(durationx=nil, duration: nil)
 
@@ -59,9 +68,12 @@ class RPiPwm
   
   alias stop off        
   alias start on
+  alias frequency freq
 
   def blink(seconds=0.5, duration: nil)
-
+    
+    self.stop if blinking?
+    
     @blinking = true
     t2 = Time.now + duration if duration
 
@@ -98,6 +110,7 @@ class RPiPwm
 
     if val then
       @pwm.start @duty_cycle
+      @pwm.frequency = @freq
     else
       @pwm.stop
     end
