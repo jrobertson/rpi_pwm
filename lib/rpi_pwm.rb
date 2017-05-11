@@ -48,6 +48,8 @@ class RPiPwm < PinX
   end
     
   alias frequency freq  
+  
+  protected
 
   # set val with 0 (off) or 1 (on)
   #
